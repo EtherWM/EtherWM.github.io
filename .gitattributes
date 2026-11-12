@@ -1,0 +1,6 @@
+* text=auto
+*.mp4 binary
+*.pdf binary
+*.webp binary
+*.png binary
+*.woff2 binary

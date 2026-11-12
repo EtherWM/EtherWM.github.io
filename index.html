@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="EtherWM: Motion-Guided Flow Correction for Long-Horizon Robot Video Prediction.">
+  <meta name="color-scheme" content="light dark">
+  <title>EtherWM · Long-Horizon Robot World Models</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="hero.css">
+  <script src="content.js" defer></script><script src="assets/frame-data.js" defer></script><script src="assets/curve-data.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#overview">Skip to content</a>
+<svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="i-logo" viewBox="0 0 32 32"><ellipse cx="16" cy="16" rx="14" ry="6" transform="rotate(-35 16 16)"/><ellipse cx="16" cy="16" rx="14" ry="6" transform="rotate(35 16 16)"/><circle cx="16" cy="16" r="3"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 14a9 9 0 0 1-11-11A9 9 0 1 0 21 14Z"/></symbol>
+  <symbol id="i-volume" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5zM16 8c3 2 3 6 0 8m3-11c5 4 5 10 0 14"/></symbol>
+  <symbol id="i-muted" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5zM16 9l6 6m0-6-6 6"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8Z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-width="3"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="m5 5 10 7-10 7ZM19 5v14" stroke-width="2"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="3"/><path d="m16 10 6-4v12l-6-4"/></symbol>
+  <symbol id="i-figure" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 6-6 4 4 3-3 5 5"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></symbol>
+  <symbol id="i-replay" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 8M4 3v7h7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+</defs></svg>
+<header class="header">
+  <div class="chapter-progress" role="progressbar" aria-label="Chapter progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div id="chapter-progress-fill"></div></div>
+  <a href="#home" class="brand" aria-label="EtherWM home"><svg><use href="#i-logo"/></svg>Ether<span>WM</span></a>
+  <nav aria-label="Chapters"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#long-horizon">Long horizon</a><a href="#droid">More results</a><a href="#generalization">Generalization</a><a href="#ablation">Ablations</a><a href="#benchmark">Simulation</a><a href="#citation">Citation</a></nav>
+  <button class="icon-button theme-toggle" aria-label="Switch to dark theme" title="Switch theme"><svg><use href="#i-moon"/></svg></button>
+</header>
+<main>
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h1>Ether<span>WM</span></h1>
+    <p class="hero-title"><span>Motion-Guided Flow Correction</span> <span>for Long-Horizon Robot Video Prediction</span></p>
+    <p class="hero-sub">Minute-scale rollouts that stay with the action and keep the world in context.</p>
+    <div class="resource-links" aria-label="Project resources">
+      <button class="resource paper" data-resource="Paper" aria-expanded="false"><img src="assets/icons/arxiv.svg" alt="">arXiv Paper<span class="todo">TODO</span></button>
+      <button class="resource code" data-resource="Code" aria-expanded="false"><img src="assets/icons/github.svg" alt="">Code<span class="todo">TODO</span></button>
+      <button class="resource weights" data-resource="Checkpoints" aria-expanded="false"><img src="assets/icons/huggingface.svg" alt="">Checkpoints<span class="todo">TODO</span></button>
+      <button class="resource data" data-resource="Datasets" aria-expanded="false"><img src="assets/icons/huggingface.svg" alt="">Datasets<span class="todo">TODO</span></button>
+      <div id="resource-popover" class="resource-popover" role="status" aria-live="polite" hidden><span id="resource-popover-name"></span><strong>Coming soon</strong></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+  <img class="hero-backdrop hero-still" src="assets/figures/hero.webp" alt="A robot arm interacting with objects at a kitchen sink" width="522" height="438">
+  <video id="hero-video" class="hero-backdrop" muted playsinline preload="auto" poster="assets/videos/sink-etherwm.webp" hidden aria-label="EtherWM long-horizon background rollout"></video>
+  <video id="hero-buffer" class="hero-backdrop" muted playsinline preload="auto" hidden aria-label="Next EtherWM background rollout"></video>
+  <div class="hero-shade"></div>
+  <p class="hero-video-caption">All background videos are long-horizon predictions by EtherWM.</p>
+  <div class="hero-controls" role="group" aria-label="Background playback">
+  <div id="hero-timeline" class="hero-timeline">
+    <button id="hero-time" class="hero-time" aria-label="Background playback controls" aria-expanded="false" aria-controls="hero-scrub-panel"><span id="hero-time-value">0s / 109s</span></button>
+    <div id="hero-scrub-panel" class="hero-scrub-panel" role="group" aria-label="Background timeline and speed" hidden>
+      <input id="hero-range" type="range" min="0" max="109" value="0" step="0.1" aria-label="Background video timeline">
+      <button id="hero-speed" class="hero-speed" aria-label="Change background playback speed" title="Change playback speed">8×</button>
+    </div>
+  </div>
+  <button id="hero-control" class="icon-button hero-control" aria-label="Pause background preview" aria-pressed="false" title="Pause background preview"><svg><use href="#i-pause"/></svg></button>
+  <button id="hero-next" class="icon-button hero-control" aria-label="Next background video" title="Next background video"><svg><use href="#i-next"/></svg></button>
+  </div>
+  </div>
+</section>
+
+<section id="overview" class="section">
+  <div class="section-heading"><p class="eyebrow">01 / Overview</p><h2>A longer horizon. A consistent world.</h2></div>
+  <div class="overview-panel">
+    <div class="panel-toolbar">
+      <div class="segmented" role="tablist" aria-label="Overview media">
+        <button role="tab" id="tab-video" aria-controls="video-panel" aria-selected="true"><svg><use href="#i-video"/></svg>Video</button>
+        <button role="tab" id="tab-figure" aria-controls="figure-panel" aria-selected="false" tabindex="-1"><svg><use href="#i-figure"/></svg>Figure</button>
+      </div>
+      <button id="teaser-mute" class="icon-button sound-button" aria-label="Unmute teaser" aria-pressed="false" title="Unmute teaser"><svg><use href="#i-muted"/></svg></button>
+    </div>
+    <div class="overview-stage">
+      <div id="video-panel" role="tabpanel" aria-labelledby="tab-video">
+        <div id="teaser-placeholder" class="teaser-placeholder"><img src="assets/videos/etherwm-teaser.webp" alt="EtherWM teaser preview" width="1280" height="720"><div class="teaser-placeholder-copy"><svg><use href="#i-play"/></svg><span>Teaser unavailable</span></div></div>
+        <video id="teaser-video" controls muted playsinline preload="metadata" poster="assets/videos/etherwm-teaser.webp" width="1920" height="1080" hidden aria-label="EtherWM teaser"></video>
+        <button id="teaser-play" class="teaser-play" type="button" aria-label="Play teaser" title="Play teaser" hidden><svg aria-hidden="true"><use href="#i-play"/></svg></button>
+      </div>
+      <div id="figure-panel" role="tabpanel" aria-labelledby="tab-figure" hidden><button class="figure-button" data-figure="intro" aria-label="Enlarge Figure 1"><img src="assets/figures/intro.webp" alt="Figure 1: EtherWM preserves scene state and follows robot motion" width="2200" height="1238"></button></div>
+    </div>
+  </div>
+  <div class="method-notes">
+    <article class="note-mint"><span class="note-number">01</span><h3>Forecast the change.</h3><p>Predict the next state<br> from actions and history.</p><div class="mini-tokens" aria-hidden="true"><i></i><i></i><i></i><i></i></div></article>
+    <article class="note-blue"><span class="note-number">02</span><h3>Correct the flow.</h3><p>Guide each denoising step<br> with motion forecasts.</p><svg class="note-flow" viewBox="0 0 150 24" aria-hidden="true"><path d="M0 18C30 18 25 4 50 5S80 22 100 14 130 10 150 5"/><path d="M0 18C40 17 70 12 150 5"/></svg></article>
+    <article class="note-lilac"><span class="note-number">03</span><h3>Carry the context.</h3><p>Keep recent details<br> and long-term memory.</p><div class="mini-tokens archive" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+  </div>
+</section>
+
+<section id="method" class="section section-tinted">
+  <div class="section-heading"><p class="eyebrow">02 / Method</p><h2>Predict. Correct. Continue.</h2><button class="text-button heading-link" data-figure="method">View full paper figure ↗</button></div>
+  <button class="figure-button method-figure" data-figure="method" aria-label="Enlarge method figure"><img loading="lazy" src="assets/figures/method.webp" alt="Motion Tower, shared memory and analytic velocity correction guide the MiniMax-H3 generator" width="2600" height="1463"></button>
+  <div class="loop-intro"><div><h3>One chunk. Then the next.</h3></div><button id="method-play" class="icon-button" aria-label="Pause method animation" title="Pause method animation" aria-pressed="false"><svg><use href="#i-pause"/></svg></button></div>
+  <div id="method-loop" class="method-loop" role="img" aria-label="Loop: history and actions enter the Motion Tower; motion forecasts correct denoising; generated video updates history and compressed memory for the next chunk.">
+    <svg class="loop-connectors" viewBox="0 0 1100 350" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="arrow-soft" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="m0 0 7 4-7 4" fill="currentColor" stroke="none"/></marker></defs><path class="loop-route route-forward route-one" d="M330 212H384" marker-end="url(#arrow-soft)" pathLength="1"/><path class="loop-route route-forward route-two" d="M717 212H771" marker-end="url(#arrow-soft)" pathLength="1"/><path class="loop-route route-return" d="M935 100V38H165V100" marker-end="url(#arrow-soft)" pathLength="1"/></svg>
+    <div class="loop-return-label">Update history &amp; memory. Repeat.</div>
+    <div class="loop-card forecast-card"><span class="step-index">01</span><h4>Forecast</h4><p>History + actions</p><div class="token-sequence history-tokens" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="loop-operation">Motion Tower <span>→ Δz</span></div></div>
+    <div class="loop-card correct-card"><span class="step-index">02</span><h4>Correct</h4><p>Each denoising step</p><div class="correction-visual" aria-hidden="true"><span>v</span><b>+</b><span class="delta-token">Δv</span><b>→</b><span class="corrected-token">v′</span></div><div class="loop-operation">Motion-guided flow</div></div>
+    <div class="loop-card generate-card"><span class="step-index">03</span><h4>Continue</h4><p>Generate the next chunk</p><div class="token-sequence output-tokens" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="loop-operation">Append to memory <span>↗</span></div></div>
+  </div>
+</section>
+
+<section id="long-horizon" class="section">
+  <div class="section-heading"><p class="eyebrow">03 / Long Horizon</p><h2>Beyond the first few seconds.</h2><div class="section-details"><p class="section-intro">110 seconds of continuous, action-conditioned prediction.</p><button class="text-button" data-figure="long-horizon">View full paper figure ↗</button></div></div>
+  <button class="figure-button sequence-strip" data-figure="long-horizon" aria-label="Enlarge the 110-second comparison"><img loading="lazy" src="assets/figures/long-horizon-strip.webp" alt="Ground truth, OSCAR and EtherWM at 0, 20, 40, 60, 80, 100 and 110 seconds" width="2201" height="828"></button>
+  <div id="player-long" class="experiment"></div>
+</section>
+
+<section id="droid" class="section section-tinted">
+  <div class="section-heading"><p class="eyebrow">04 / More Results</p><h2>The details should stay.</h2><div class="section-details"><p class="section-intro">DROID benchmark comparisons, followed by additional everyday-scene rollouts.</p><button class="text-button" data-figure="droid">View full paper figure ↗</button></div></div>
+  <button class="figure-button sequence-strip" data-figure="droid" aria-label="Enlarge DROID comparison"><img loading="lazy" src="assets/figures/droid-strip.webp" alt="DROID keyframes compare GT, Ctrl-World, OSCAR, MiniWorld and EtherWM over 60 seconds" width="2200" height="1220"></button>
+  <div id="player-droid" class="experiment"></div>
+  <div id="player-extras-droid" class="rollout-gallery"></div>
+</section>
+
+<section id="generalization" class="section">
+  <div class="section-heading"><p class="eyebrow">05 / Generalization</p><h2>Same scene. Different actions.</h2></div>
+  <div class="transfer-equation"><span>Scene 1<small>visual context</small></span><b>+</b><span>Scene 2<small>execution trajectory</small></span><b>→</b><span class="accent">New rollout<small>EtherWM prediction</small></span></div>
+  <div class="fold-case">
+    <div class="case-heading"><h3>Clothes folding. Transferring the action.</h3><button class="text-button" data-figure="transfer">View Figure 3 ↗</button></div>
+    <button class="figure-button sequence-strip transfer-evidence" data-figure="transfer" aria-label="Enlarge Figure 3 folding action transfer"><img loading="lazy" src="assets/figures/transfer-strip.webp" alt="Paper keyframes: Scene 2 action source, Scene 1 appearance source, and EtherWM with transferred actions" width="2060" height="850"></button>
+    <div id="player-transfer" class="experiment"></div>
+  </div>
+  <div class="wipe-case">
+    <div class="case-heading"><h3>Table wiping. Transferring the action.</h3><button class="text-button" data-figure="wipe">View Figure 7 ↗</button></div>
+    <button class="figure-button sequence-strip wipe-evidence" data-figure="wipe" aria-label="Enlarge Figure 7 action-transfer comparison"><img loading="lazy" src="assets/figures/wipe-strip.webp" alt="Figure 7: EtherWM, OSCAR, Ctrl-World and MiniWorld under transferred actions, from 0 to 60 paper seconds" width="1856" height="896"></button>
+    <div id="player-wipe" class="experiment"></div>
+  </div>
+  <div class="transfer-results">
+    <div class="result-table-card"><div class="result-title"><h3>Action transfer</h3><button class="soft-button" id="replay-transfer"><svg><use href="#i-replay"/></svg>Replay</button></div><p>Trajectory accuracy · 8,654 episodes</p><div class="table-wrap" tabindex="0" aria-label="Action-transfer trajectory accuracy"><table id="transfer-table"><caption class="sr-only">Table 3. Matched and transferred trajectory accuracy. Drop is matched minus transferred.</caption></table></div></div>
+    <div class="result-table-card"><div class="result-title"><h3>Frame-wise quality</h3><button class="soft-button" id="replay-quality"><svg><use href="#i-replay"/></svg>Replay</button></div><p>Qwen2.5-VL · 500 DROID episodes · scores / 10</p><div class="table-wrap" tabindex="0" aria-label="Frame-wise action-transfer quality"><table id="quality-table"><caption class="sr-only">Table 4. Frame-wise Qwen2.5-VL-72B assessment. These scores do not measure temporal consistency.</caption></table></div></div>
+  </div>
+</section>
+
+
+
+<section id="ablation" class="section section-tinted">
+  <div class="section-heading"><p class="eyebrow">06 / Ablations</p><h2>Remember the scene. Follow the motion.</h2></div>
+  <div class="evidence-header"><button class="text-button" data-figure="ablation">View full paper figure ↗</button></div>
+  <button class="figure-button sequence-strip ablation-evidence" data-figure="ablation" aria-label="Enlarge component ablation figure"><img loading="lazy" src="assets/figures/ablation-strip.webp" alt="Paper detail comparison at 8 seconds: ground truth, without memory, without both, and EtherWM" width="2000" height="390"></button>
+  <div id="player-ablation" class="experiment"></div>
+  <div class="table-controls ablation-controls"><span>Component ablations</span><div><button class="soft-button" id="replay-ablation"><svg><use href="#i-replay"/></svg>Replay</button></div></div>
+  <div class="table-wrap ablation-table" tabindex="0" aria-label="Scrollable component ablation table"><table id="ablation-table"><caption class="sr-only">Component ablations on 500 held-out episodes, 250 DROID and 250 AgiBot.</caption></table></div>
+  <div class="table-legend"><span><b>Bold</b> Best</span><span><u>Underlined</u> Second best</span></div>
+</section>
+
+<section id="benchmark" class="section">
+  <div class="section-heading"><p class="eyebrow">07 / Simulation Datasets</p><h2>Action following. Measured.</h2><p class="section-intro">Additional evaluation on the RoboTwin 2.0 simulation benchmark: 50 tasks, 500 episodes. Best on 5 of 7 metrics.</p></div>
+  <div class="table-controls"><span>All metrics ↑</span><div><button class="soft-button" id="replay-table"><svg><use href="#i-replay"/></svg>Replay</button></div></div>
+  <div class="table-wrap" tabindex="0" aria-label="Scrollable WorldArena results"><table id="benchmark-table"><caption class="sr-only">WorldArena evaluation on RoboTwin 2.0. All values from the manuscript.</caption></table></div>
+  <div class="table-legend"><span><b>Bold</b> Best</span><span><u>Underlined</u> Second best</span><span id="reveal-status" class="sr-only" aria-live="polite"></span></div>
+</section>
+
+<section id="citation" class="section section-tinted citation-section">
+  <div class="section-heading"><p class="eyebrow">08 / Citation</p><h2>Cite EtherWM.</h2></div>
+  <div class="citation-card"><div class="citation-toolbar"><span>BibTeX</span><button id="copy-citation" class="soft-button" aria-label="Copy BibTeX"><svg><use href="#i-copy"/></svg><span>Copy</span></button></div><pre><code id="citation-code">@misc{etherwm2027,
+  title  = {EtherWM: Motion-Guided Flow Correction
+            for Long-Horizon Robot Video Prediction},
+  author = {Anonymous Authors},
+  year   = {2027},
+  note   = {Anonymous manuscript}
+}</code></pre></div><span id="copy-status" role="status" aria-live="polite" class="copy-status"></span>
+</section>
+<footer class="footer"><a href="#home" class="brand"><svg><use href="#i-logo"/></svg>Ether<span>WM</span></a><a href="#home" class="back-top">Back to top ↑</a></footer>
+</main>
+<dialog id="figure-dialog" aria-label="Paper figure viewer"><div class="dialog-bar"><span id="figure-title"></span><button id="close-figure" class="soft-button" aria-label="Close figure">Close ×</button></div><div class="dialog-scroll"><img id="figure-large" alt=""></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><div class="noscript">Enable JavaScript for playback controls and interactive charts.</div></noscript>
+</body></html>

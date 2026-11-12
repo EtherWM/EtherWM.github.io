@@ -1,0 +1,358 @@
+[
+  {
+    "source": "3.mp4",
+    "file": "sink-gt.mp4",
+    "poster": "sink-gt.webp",
+    "crop": "crop=320:240:0:0",
+    "codec": "h264",
+    "size": [
+      320,
+      240
+    ],
+    "fps": 5.0,
+    "frames": 545,
+    "duration": 109.0,
+    "bytes": 2583252,
+    "hasAudio": false
+  },
+  {
+    "source": "3.mp4",
+    "file": "sink-etherwm.mp4",
+    "poster": "sink-etherwm.webp",
+    "crop": "crop=286:240:337:0:exact=1",
+    "codec": "h264",
+    "size": [
+      286,
+      240
+    ],
+    "fps": 5.0,
+    "frames": 545,
+    "duration": 109.0,
+    "bytes": 2407204,
+    "hasAudio": false
+  },
+  {
+    "source": "3.mp4",
+    "file": "sink-oscar.mp4",
+    "poster": "sink-oscar.webp",
+    "crop": "crop=320:240:640:0",
+    "codec": "h264",
+    "size": [
+      320,
+      240
+    ],
+    "fps": 5.0,
+    "frames": 545,
+    "duration": 109.0,
+    "bytes": 3191890,
+    "hasAudio": false
+  },
+  {
+    "source": "4.mp4",
+    "file": "fold-scene2-gt.mp4",
+    "poster": "fold-scene2-gt.webp",
+    "crop": "crop=480:324:0:0",
+    "codec": "h264",
+    "size": [
+      480,
+      324
+    ],
+    "fps": 5.0,
+    "frames": 157,
+    "duration": 31.4,
+    "bytes": 1012825,
+    "hasAudio": false
+  },
+  {
+    "source": "5.mp4",
+    "file": "fold-scene1-gt.mp4",
+    "poster": "fold-scene1-gt.webp",
+    "crop": "crop=480:324:0:0",
+    "codec": "h264",
+    "size": [
+      480,
+      324
+    ],
+    "fps": 5.0,
+    "frames": 229,
+    "duration": 45.8,
+    "bytes": 1405818,
+    "hasAudio": false
+  },
+  {
+    "source": "0.mp4",
+    "file": "window-gt.mp4",
+    "poster": "window-gt.webp",
+    "crop": "crop=640:480:0:0",
+    "codec": "h264",
+    "size": [
+      640,
+      480
+    ],
+    "fps": 15.0,
+    "frames": 158,
+    "duration": 10.533333333333333,
+    "bytes": 647588,
+    "hasAudio": false
+  },
+  {
+    "source": "0.mp4",
+    "file": "window-etherwm.mp4",
+    "poster": "window-etherwm.webp",
+    "crop": "crop=640:480:640:0",
+    "codec": "h264",
+    "size": [
+      640,
+      480
+    ],
+    "fps": 15.0,
+    "frames": 158,
+    "duration": 10.533333333333333,
+    "bytes": 605728,
+    "hasAudio": false
+  },
+  {
+    "source": "1.mp4",
+    "file": "cloth-gt.mp4",
+    "poster": "cloth-gt.webp",
+    "crop": "crop=640:480:0:0",
+    "codec": "h264",
+    "size": [
+      640,
+      480
+    ],
+    "fps": 15.0,
+    "frames": 158,
+    "duration": 10.533333333333333,
+    "bytes": 845265,
+    "hasAudio": false
+  },
+  {
+    "source": "1.mp4",
+    "file": "cloth-etherwm.mp4",
+    "poster": "cloth-etherwm.webp",
+    "crop": "crop=640:480:640:0",
+    "codec": "h264",
+    "size": [
+      640,
+      480
+    ],
+    "fps": 15.0,
+    "frames": 158,
+    "duration": 10.533333333333333,
+    "bytes": 808799,
+    "hasAudio": false
+  },
+  {
+    "source": "6.mp4",
+    "file": "kitchen-gt.mp4",
+    "poster": "kitchen-gt.webp",
+    "crop": "crop=480:324:0:0",
+    "codec": "h264",
+    "size": [
+      480,
+      324
+    ],
+    "fps": 5.0,
+    "frames": 329,
+    "duration": 65.8,
+    "bytes": 3301432,
+    "hasAudio": false
+  },
+  {
+    "source": "6.mp4",
+    "file": "kitchen-etherwm.mp4",
+    "poster": "kitchen-etherwm.webp",
+    "crop": "crop=480:324:480:0",
+    "codec": "h264",
+    "size": [
+      480,
+      324
+    ],
+    "fps": 5.0,
+    "frames": 329,
+    "duration": 65.8,
+    "bytes": 3090877,
+    "hasAudio": false
+  },
+  {
+    "source": "7.mp4",
+    "file": "cup-gt.mp4",
+    "poster": "cup-gt.webp",
+    "crop": "crop=768:512:0:0",
+    "codec": "h264",
+    "size": [
+      768,
+      512
+    ],
+    "fps": 5.0,
+    "frames": 57,
+    "duration": 11.4,
+    "bytes": 623245,
+    "hasAudio": false
+  },
+  {
+    "source": "7.mp4",
+    "file": "cup-etherwm.mp4",
+    "poster": "cup-etherwm.webp",
+    "crop": "crop=768:512:768:0",
+    "codec": "h264",
+    "size": [
+      768,
+      512
+    ],
+    "fps": 5.0,
+    "frames": 57,
+    "duration": 11.4,
+    "bytes": 536012,
+    "hasAudio": false
+  },
+  {
+    "source": "2.mp4",
+    "file": "wipe-etherwm.mp4",
+    "poster": "wipe-etherwm.webp",
+    "crop": "crop=320:212:0:0",
+    "codec": "h264",
+    "size": [
+      320,
+      212
+    ],
+    "fps": 5.0,
+    "frames": 329,
+    "duration": 65.8,
+    "bytes": 1461723,
+    "hasAudio": false
+  },
+  {
+    "source": "2.mp4",
+    "file": "wipe-ctrl.mp4",
+    "poster": "wipe-ctrl.webp",
+    "crop": "crop=320:212:320:0",
+    "codec": "h264",
+    "size": [
+      320,
+      212
+    ],
+    "fps": 5.0,
+    "frames": 329,
+    "duration": 65.8,
+    "bytes": 1408786,
+    "hasAudio": false
+  },
+  {
+    "source": "2.mp4",
+    "file": "wipe-mini.mp4",
+    "poster": "wipe-mini.webp",
+    "crop": "crop=284:212:656:0",
+    "codec": "h264",
+    "size": [
+      284,
+      212
+    ],
+    "fps": 5.0,
+    "frames": 329,
+    "duration": 65.8,
+    "bytes": 1319796,
+    "hasAudio": false
+  },
+  {
+    "source": "Generalization2_wipe.mp4",
+    "file": "wipe-oscar.mp4",
+    "poster": "wipe-oscar.webp",
+    "crop": "crop=284:208:336:0",
+    "codec": "h264",
+    "size": [
+      284,
+      208
+    ],
+    "fps": 5.0,
+    "frames": 329,
+    "duration": 65.8,
+    "bytes": 1340072,
+    "hasAudio": false
+  },
+  {
+    "source": "ablation_ours.mp4",
+    "file": "ablation-gt.mp4",
+    "poster": "ablation-gt.webp",
+    "crop": "crop=570:432:34:0",
+    "codec": "h264",
+    "size": [
+      570,
+      432
+    ],
+    "fps": 5.0,
+    "frames": 145,
+    "duration": 29.0,
+    "bytes": 1733400,
+    "hasAudio": false
+  },
+  {
+    "source": "ablation_ours.mp4",
+    "file": "ablation-etherwm.mp4",
+    "poster": "ablation-etherwm.webp",
+    "crop": "crop=570:432:674:0",
+    "codec": "h264",
+    "size": [
+      570,
+      432
+    ],
+    "fps": 5.0,
+    "frames": 145,
+    "duration": 29.0,
+    "bytes": 1681012,
+    "hasAudio": false
+  },
+  {
+    "source": "ablation_no_motion_tower.mp4",
+    "file": "ablation-no-motion.mp4",
+    "poster": "ablation-no-motion.webp",
+    "crop": "crop=570:432:674:0",
+    "codec": "h264",
+    "size": [
+      570,
+      432
+    ],
+    "fps": 5.0,
+    "frames": 133,
+    "duration": 26.6,
+    "bytes": 1578436,
+    "hasAudio": false
+  },
+  {
+    "source": "ablation_no_motion_tower_and_memory.mp4",
+    "file": "ablation-no-motion-or-memory.mp4",
+    "poster": "ablation-no-motion-or-memory.webp",
+    "crop": "crop=570:432:674:0",
+    "codec": "h264",
+    "size": [
+      570,
+      432
+    ],
+    "fps": 5.0,
+    "frames": 145,
+    "duration": 29.0,
+    "bytes": 1725326,
+    "hasAudio": false
+  },
+  {
+    "source": "ablation_no_memory.mp4",
+    "file": "ablation-no-memory.mp4",
+    "poster": "ablation-no-memory.webp",
+    "crop": "crop=570:432:34:32",
+    "codec": "h264",
+    "size": [
+      570,
+      432
+    ],
+    "fps": 5.0,
+    "frames": 145,
+    "duration": 29.0,
+    "bytes": 1859035,
+    "hasAudio": false,
+    "sourceLabel": "Original inference",
+    "model": "Without memory",
+    "identityConfirmedBy": "User, following source-provider verification",
+    "postprocessed": false
+  }
+]
